@@ -1,5 +1,5 @@
 {
-  "name": "social-home-fitness",
+  "name": "streak-demo",
   "version": "1.0.0",
   "description": "",
   "main": "",
@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "react": "webpack -d --watch",
+    "build": "webpack --watch",
     "start": "nodemon server/index.js"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "react-redux": "^7.2.6",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
+    "react-spring": "^9.4.3",
     "styled-components": "^5.3.3",
     "yup": "^0.28.4"
   },

@@ -39,7 +39,7 @@ module.exports = {
   },
   plugins: [
     new dotenv({
-      path: path.join(__dirname, '/client/.env')
+      path: path.join(__dirname, '/.env')
     })
   ]
 };

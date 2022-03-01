@@ -1,5 +1,6 @@
 ## MAC files ##
 .DS_Store
+.vscode
 
 ## NPM ##
 npm
@@ -22,3 +23,5 @@ coverage
 
 # Webpack Bundle
 client/dist/bundle.js
+
+.env

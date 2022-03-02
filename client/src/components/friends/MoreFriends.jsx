@@ -1,15 +1,7 @@
 import React from 'react';
 import AddFriend from '../userPage/AddFriend.jsx';
 
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogContent,
-  AlertDialogOverlay,
-  Button
-} from '@chakra-ui/core';
+import { AlertDialog,  AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Button } from '@chakra-ui/react';
 
 const MoreFriends = () => {
   const [isOpen, setIsOpen] = React.useState();

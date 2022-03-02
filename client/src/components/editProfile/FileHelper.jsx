@@ -1,7 +1,7 @@
 // Dependencies
 import React, { Component } from 'react';
 import { auth, db, storage } from '../../firebase.js';
-import { Box, Button, Flex, Icon, Text } from '@chakra-ui/core';
+import { Box, Button, Flex, Icon, Text } from '@chakra-ui/react';
 import ToastFileHelper from './ToastFileHelper.jsx';
 
 class FileHelper extends Component {

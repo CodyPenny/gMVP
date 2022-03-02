@@ -6,15 +6,7 @@ import { UserContext } from '../../providers/UsersProvider';
 
 // Chakra + Forms
 import { Formik, Form } from 'formik';
-import {
-  useToast,
-  Box,
-  Flex,
-  Avatar,
-  Text,
-  Button,
-  Stack
-} from '@chakra-ui/core';
+import { useToast,  Box,  Flex, Avatar, Text, Button, Stack } from '@chakra-ui/react';
 import ValidatorField from '../formHelpers/ValidatorField.jsx';
 import { displayNameValid } from '../formHelpers/validators.js';
 import FileHelper from '../editProfile/FileHelper';

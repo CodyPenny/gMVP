@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Chakra
-import { Text, SimpleGrid } from '@chakra-ui/core';
+import { Text, SimpleGrid } from '@chakra-ui/react';
 import { StyledBoxC } from '../../styledComponents/ericStyles.js';
 
 const Challenge = ({ CUID, challengeName, memberCount, duration }) => {

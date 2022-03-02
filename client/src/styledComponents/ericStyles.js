@@ -1,16 +1,6 @@
 // Dependencies
 import styled from 'styled-components';
-import {
-  Stack,
-  Text,
-  Flex,
-  Box,
-  AccordionItem,
-  AccordionHeader,
-  PopoverContent,
-  Button,
-  IconButton
-} from '@chakra-ui/core';
+import { Stack, Text, Flex, Box, AccordionItem, AccordionButton, PopoverContent, Button, IconButton } from '@chakra-ui/react';
 
 const StyledStack = styled(Stack)`
   background: #beebe9;
@@ -24,7 +14,7 @@ const StyledAccItem = styled(AccordionItem)`
   margin-top: 0.5rem;
 `;
 
-const StyleAccHeader = styled(AccordionHeader)`
+const StyleAccHeader = styled(AccordionButton)`
   :hover {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;

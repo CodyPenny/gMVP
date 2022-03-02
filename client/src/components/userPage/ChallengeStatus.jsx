@@ -6,15 +6,7 @@ import { UserContext } from '../../providers/UsersProvider.jsx';
 import { ChallengeContext } from '../../providers/ChallengeProvider.jsx';
 
 // ChakraUI
-import {
-  Box,
-  IconButton,
-  Heading,
-  Flex,
-  SimpleGrid,
-  Stack,
-  Textarea
-} from '@chakra-ui/core';
+import { Box, IconButton, Heading, Flex, SimpleGrid, Stack, Textarea } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { StyledText } from '../../styledComponents/ericStyles.js';
 import { FiPlus, FiUser, FiEdit3 } from 'react-icons/fi';

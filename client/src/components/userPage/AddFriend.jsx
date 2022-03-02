@@ -5,7 +5,7 @@ import { UserContext } from '../../providers/UsersProvider.jsx';
 
 // Chakra + Forms
 import { Formik, Form } from 'formik';
-import { Button, Flex, useToast } from '@chakra-ui/core';
+import { Button, Flex, useToast } from '@chakra-ui/react';
 import { friendCodeValid } from '../formHelpers/validators.js';
 
 // Components

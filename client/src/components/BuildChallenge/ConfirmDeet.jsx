@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IconButton, Box, Flex, Textarea } from '@chakra-ui/core';
+import { IconButton, Box, Flex, Textarea } from '@chakra-ui/react';
 
 const ConfirmDetailsWrapper = styled.div`
   /* ////////////////////////////////// */

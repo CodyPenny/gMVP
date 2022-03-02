@@ -7,7 +7,7 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   Button
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 function ToastFileHelper(props) {
   const [isOpen, setIsOpen] = useState();

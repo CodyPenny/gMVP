@@ -1,8 +1,7 @@
 // Dependencies
 import React from 'react';
 import { useField, Field } from 'formik';
-import { PseudoBox } from '@chakra-ui/core';
-import { Input, FormControl, FormErrorMessage } from '@chakra-ui/core';
+import { Input, FormControl, FormErrorMessage, Box } from '@chakra-ui/react';
 
 const ValidatorField = ({ placeholder, type, callback = false, ...props }) => {
   const [field, meta] = useField(props);
@@ -17,7 +16,7 @@ const ValidatorField = ({ placeholder, type, callback = false, ...props }) => {
             width={'100%'}
             isInvalid={form.errors[field.name] && form.touched[field.name]}
           >
-            <PseudoBox
+            <Box
               as={Input}
               variant="flushed"
               placeholder={placeholder}

@@ -5,8 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 // Chakra + Forms
 import { signOutOfApp } from '../../firebase.js';
-import { AccordionPanel, Avatar, Box, Button, Flex, Heading, IconButton, SimpleGrid, Stack
-} from '@chakra-ui/react';
+import { AccordionPanel, Avatar, Box, Button, Flex, Heading, IconButton, SimpleGrid, Stack } from '@chakra-ui/react';
 import { FiLogOut, FiUsers, FiEdit } from 'react-icons/fi';
 import { MdPlaylistAdd } from 'react-icons/md';
 

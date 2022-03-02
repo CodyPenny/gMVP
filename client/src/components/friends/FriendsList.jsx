@@ -4,15 +4,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 // Chakra
-import {
-  Box,
-  Divider,
-  Flex,
-  IconButton,
-  SimpleGrid,
-  Skeleton,
-  Text
-} from '@chakra-ui/core';
+import { Box, Divider, Flex, IconButton, SimpleGrid, Skeleton, Text } from '@chakra-ui/react';
 import { FiChevronsLeft } from 'react-icons/fi';
 
 // Components

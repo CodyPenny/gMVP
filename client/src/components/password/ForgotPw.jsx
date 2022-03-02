@@ -4,16 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { resetPasswordWithEmail } from '../../firebase.js';
 
 // Chakra + Forms
-import {
-  useToast,
-  Box,
-  Flex,
-  Text,
-  Stack,
-  Button,
-  Icon,
-  Image
-} from '@chakra-ui/core';
+import { useToast, Box, Flex, Text, Stack, Button, Icon, Image } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import ValidatorField from '../formHelpers/ValidatorField.jsx';
 import { emailValid } from '../formHelpers/validators.js';

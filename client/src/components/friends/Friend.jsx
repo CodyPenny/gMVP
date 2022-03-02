@@ -4,7 +4,7 @@ import { setUserChallenges, challengeAdjustMember } from '../../firebase.js';
 import { ChallengeContext } from '../../providers/ChallengeProvider.jsx';
 
 // Chakra + Forms
-import { useToast, Flex, Box, Avatar } from '@chakra-ui/core';
+import { useToast, Flex, Box, Avatar } from '@chakra-ui/react';
 import {
   BsFillPersonPlusFill,
   BsFillPersonFill,

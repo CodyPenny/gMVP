@@ -3,7 +3,7 @@ import { getChallenge, getUser } from '../../firebase';
 import React, { Component } from 'react';
 
 // Chakra
-import { Box, Text, Grid, Skeleton, SimpleGrid } from '@chakra-ui/core';
+import { Box, Text, Grid, Skeleton, SimpleGrid } from '@chakra-ui/react';
 
 const promiseGen = async (user, currentStreak) => {
   let data = await getUser(user);

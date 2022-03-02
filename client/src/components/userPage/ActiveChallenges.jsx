@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { getChallenge } from '../../firebase.js';
 
 // Chakra
-import { Box, Text, SimpleGrid, Skeleton } from '@chakra-ui/core';
+import { Box, Text, SimpleGrid, Skeleton } from '@chakra-ui/react';
 import Challenge from './Challenge.jsx';
 
 const promiseGen = async (CUID) => {

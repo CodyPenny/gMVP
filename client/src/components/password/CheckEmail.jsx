@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Box, Flex, Text, Button, Icon } from '@chakra-ui/core';
+import { Box, Flex, Text, Button, Icon } from '@chakra-ui/react';
 
 const CheckEmail = () => {
   return (

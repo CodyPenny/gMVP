@@ -16,7 +16,7 @@ import {
   Box,
   Flex,
   Textarea
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 // Components
 import ConfirmDetailsPage from './ConfirmDeet.jsx';

@@ -1,7 +1,7 @@
 // Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider, CSSReset } from '@chakra-ui/core';
+import { ChakraProvider } from '@chakra-ui/react';
 
 // Components
 import App from './components/App.jsx';
@@ -11,13 +11,12 @@ import UsersProvider from './providers/UsersProvider.jsx';
 import FriendsProvider from './providers/FriendsProvider.jsx';
 
 ReactDOM.render(
-  <ThemeProvider>
-    <CSSReset />
-       <UsersProvider>
-         <FriendsProvider>
-          <App />
-         </FriendsProvider>
-       </UsersProvider>
-  </ThemeProvider>,
+  <ChakraProvider>
+      <UsersProvider>
+        <FriendsProvider>
+        <App />
+        </FriendsProvider>
+      </UsersProvider>
+  </ChakraProvider>,
   document.getElementById('root')
 );

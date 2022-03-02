@@ -45,7 +45,6 @@ const Register = () => {
           marginBottom="10%"
           src="https://mvp2020.s3-us-west-1.amazonaws.com/blueemail2.png"
         />
-
         <Formik
           initialValues={{ email: '', password: '', displayName: '' }}
           validationSchema={registerValid}
@@ -72,6 +71,7 @@ const Register = () => {
             }
           }}
         >
+          
           {({ values, isSubmitting }) => (
             <Form>
               <ValidatorField

@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 // Chakra + Forms
 import { Formik, Form } from 'formik';
-import { Button, useToast, Flex, Box, Image } from '@chakra-ui/core';
+import { Button, useToast, Flex, Box, Image } from '@chakra-ui/react';
 import { registerValid } from '../formHelpers/validators.js';
 
 // Components

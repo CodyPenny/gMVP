@@ -1,8 +1,6 @@
 import React from 'react'
 import { Routes, Route, Link, Navigate, Outlet } from 'react-router-dom';
-import {
-    Box,Flex,Popover,PopoverTrigger,PopoverHeader,PopoverBody,PopoverArrow,Image,PseudoBox,Button, Text
-  } from '@chakra-ui/core';
+import { Box, Flex, Popover, PopoverTrigger, PopoverHeader, PopoverBody, PopoverArrow, Image, Button, Text } from '@chakra-ui/react';
 
   // Landing Page
 import Login from './Login.jsx';
@@ -87,7 +85,7 @@ const LandingPage = () => {
             src="https://mvp2020.s3-us-west-1.amazonaws.com/bird.png"
         />
         <Link to="/login" style={{ width: '80%' }}>
-            <PseudoBox
+            <Box
             as={Button}
             rounded="20px"
             background="#FFB6BA"
@@ -102,10 +100,10 @@ const LandingPage = () => {
             _focus={{ boxShadow: 'outline' }}
             >
             Log In
-            </PseudoBox>
+            </Box>
         </Link>
         <Link to="/register" style={{ width: '80%' }}>
-            <PseudoBox
+            <Box
             as={Button}
             background="#FFB6BA"
             color="#373737"
@@ -117,7 +115,7 @@ const LandingPage = () => {
             _focus={{ boxShadow: 'outline' }}
             >
             Register
-            </PseudoBox>
+            </Box>
         </Link>
         {/* <Outlet /> */}
         </Flex>

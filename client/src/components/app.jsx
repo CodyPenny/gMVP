@@ -1,25 +1,11 @@
 // Dependencies
-import React, { useContext } from 'react';
-import { UserContext } from '../providers/UsersProvider.jsx';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 
 // Chakra + Forms
-import {
-  Box,
-  Flex,
-  Popover,
-  PopoverTrigger,
-  PopoverHeader,
-  PopoverBody,
-  PopoverArrow,
-  Image,
-  PseudoBox,
-  Button,
-  Text
-} from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/react';
 
-// Componenets + Styles
-// Landing Page
+// Componenets 
 import Login from './landingPage/Login.jsx';
 import Register from './landingPage/Register.jsx';
 import ForgotPassword from './password/ForgotPw.jsx';

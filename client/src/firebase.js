@@ -1,10 +1,9 @@
-//import firebase from 'firebase/compat/app';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-//import 'firebase/storage';
+
 import { getStorage } from "firebase/storage";
-import 'firebase/analytics'
+//import 'firebase/analytics'
 
 /**
  * Lets the app know which Google Firebase server the app should talk to
@@ -13,7 +12,6 @@ import 'firebase/analytics'
 const config = {
   apiKey: process.env.APIKEY,
   authDomain: process.env.AUTH_DOMAIN,
-  // databaseURL: 'https://hrla35-mvp.firebaseio.com',
   projectId: process.env.PROJECT_ID,
   storageBucket: process.env.STORAGE_BUCKET,
   messagingSenderId: process.env.MESSAGING_SENDER_ID,
@@ -21,7 +19,6 @@ const config = {
   measurementId: process.env.MEASUREMENT_ID
 };
 
-const streakApp = initializeApp(config);
 
 /**
  * Remove this later
@@ -34,58 +31,95 @@ const streakApp = initializeApp(config);
  * Firebase Solutions
  */
 
-export const firestore = getFirestore();
+const streakApp = initializeApp(config);
+export const db = getFirestore(streakApp);
 export const storage = getStorage(streakApp);
 export const auth = getAuth();
+export const provider = new GoogleAuthProvider();
+
 
 /**
- * Firebase Packaged Functionality
+ * 
+ * @returns 
  */
-
-export const provider = new GoogleAuthProvider();
 export const signInWithGoogle = () => signInWithPopup(auth, provider);
 
+/**
+ * 
+ * @param {*} email 
+ * @param {*} password 
+ * @returns 
+ */
 export const signInWithEmail = (email, password) =>
   signInWithEmailAndPassword(email, password);
 
-export const registerWithEmailAndPassword = ( email, password ) =>{
+
+/**
+ * Authenticates with Firebase
+ * @param {*} email 
+ * @param {*} password 
+ * @returns user's token and authentication to UsersProvider
+ */
+export const registerWithEmailAndPassword = async ( email, password ) =>{
   console.log('registering')
-  return createUserWithEmailAndPassword(auth, email, password)
+  return await createUserWithEmailAndPassword(auth, email, password)
 }
 
+/**
+ * 
+ * @param {*} email 
+ * @returns 
+ */
 export const resetPasswordWithEmail = (email) =>
   auth.sendPasswordResetEmail(email);
 
   export const signOutOfApp = () => signOut(auth)
 
+
 /**
- * Generalized Functionality
+ * Accesses the firestore database
+ * @param {*} collection 
+ * @param {*} UID 
+ * @returns document object matching the UID
  */
+const getRef = (collection, UID) => {
+  return doc( db, collection, UID )
+}
 
-const getRef = (collection, UID) => 
-//firestore.collection(collection).doc(UID);
-  doc( firestore, collection, UID )
-
+/**
+ * 
+ * @param {*} docRef 
+ * @param {*} updates 
+ * @returns 
+ */
 const performUpdate = async (docRef, updates) =>
   await docRef.update({ ...updates });
 
+
 /**
- * User Related Functionality
+ * Creates a new user document with firebase
+ * @param {*} user 
+ * @param {*} additionalData 
+ * @returns new user document
  */
+export const createUserProfileDocument = async (user) => {
 
-export const createUserProfileDocument = async (user, additionalData) => {
   if (!user) return;
-  console.log('creating profile')
-
-  const uRef = getRef('users', user.uid);
-
+  
   try {
-    //const uDoc = await uRef.get();
+    const { email, photoURL, displayName } = user;
+    const createdAt = new Date();
+    const uRef = doc(db, "users", user.uid)
+    await setDoc( uRef , {
+      email,
+      photoURL,
+      displayName,
+      createdAt
+    })
+
     const uDoc = await getDoc( uRef );
 
-    if (!uDoc.exists) {
-      const { email, displayName, photoURL } = user;
-      const createdAt = new Date();
+    // if (!uDoc.exists) {
 
       // await uRef.set({
       //   displayName,
@@ -94,40 +128,46 @@ export const createUserProfileDocument = async (user, additionalData) => {
       //   createdAt,
       //   ...additionalData
       // });
-      await setDoc( uRef, {
-        displayName,
-        email,
-        photoURL,
-        createdAt,
-        ...additionalData
-      } )
-    }
+    //   await setDoc( uRef, {
+    //     displayName,
+    //     email,
+    //     photoURL,
+    //     createdAt,
+    //     ...additionalData
+    //   } )
+    // }
 
-    return getUserDocument(user.uid);
+    return await getUserDocument(user.uid);
   } catch (error) {
     console.error('createUserProfileDocument Error:', error);
     return 'createUserProfileDocument Error';
   }
 };
 
+/**
+ * 
+ * @param {*} UID user's firestore unique ID
+ * @returns 
+ */
 export const getUserDocument = async (UID) => {
   if (!UID) return null;
 
   const uRef = getRef('users', UID);
 
   try {
-    const uDoc = await uRef.get();
+      const uDoc = await getDoc( uRef );
 
-    if (uDoc.data().friends === undefined) {
-      const updates = {
-        friends: { [UID]: 2, C8gVA1A8ddcaQnawSKoJMVUOTRv2: 1 },
-        challenges: [],
-        completed: 0,
-        wins: 0
-      };
+    //TODO: add default friends
+    // if (uDoc.data().friends === undefined) {
+    //   const updates = {
+    //     friends: { [UID]: 2, C8gVA1A8ddcaQnawSKoJMVUOTRv2: 1 },
+    //     challenges: [],
+    //     completed: 0,
+    //     wins: 0
+    //   };
 
-      await performUpdate(uRef, updates);
-    }
+    //   await performUpdate(uRef, updates);
+    // }
 
     return uRef;
   } catch (error) {
@@ -136,12 +176,19 @@ export const getUserDocument = async (UID) => {
   }
 };
 
+/**
+ * 
+ * @param {*} UID 
+ * @returns 
+ */
+
 export const getUser = async (UID) => {
   if (!UID) return null;
 
   try {
     const fRef = getRef('users', UID);
     const fDoc = await fRef.get();
+
 
     return fDoc.data();
   } catch (error) {
@@ -228,7 +275,7 @@ export const createChallengeProfileDocument = async (
   if (!challenge) return;
 
   try {
-    let cRef = await firestore
+    let cRef = await db
       .collection('challenges')
       .add({ ...challenge, ...additionalData });
 
@@ -346,4 +393,3 @@ export const challengeCheckIn = async (CUID, UID) => {
   }
 };
 
-//export default firebase;

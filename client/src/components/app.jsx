@@ -45,7 +45,7 @@ const App = () => {
   
 
   return (
-    <Flex direction="column" align="center" justify="center" h="100%">
+     <Flex direction="column" align="center" >
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
@@ -76,7 +76,7 @@ const App = () => {
                   </Route> */}
         </Routes>
       </Router>
-    </Flex>
+     </Flex>
   );
 };
 

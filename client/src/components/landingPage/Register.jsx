@@ -15,8 +15,8 @@ const Register = () => {
   const toast = useToast();
 
   return (
-    <Flex direction="column" align="center" justify="center">
-      <Box
+    // <Flex direction="column" align="center" justify="center">
+    <Box
         bg="#BEEBE9"
         p={[2, 4, 6, 8]}
         height="100%"
@@ -45,15 +45,13 @@ const Register = () => {
             try {
               const { user } = await registerWithEmailAndPassword(
                 data.email,
-                data.password
-              );
-
-              createUserProfileDocument(user, {
-                displayName: data.displayName
-              });
-
+                data.password,
+               );
+              user.displayName = data.displayName
+             await createUserProfileDocument( user );
               resetForm();
             } catch (error) {
+              console.log('error in form', error)
               toast({
                 title: 'An error occurred.',
                 description: 'Email already in use.',
@@ -122,8 +120,8 @@ const Register = () => {
             </Form>
           )}
         </Formik>
-      </Box>
-    </Flex>
+    </Box>
+    // </Flex>
   );
 };
 

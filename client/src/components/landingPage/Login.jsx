@@ -32,6 +32,7 @@ const Login = () => {
           onSubmit={async (data, { resetForm }) => {
             try {
               let userCredential= await signInWithEmail(data.email, data.password);
+              console.log('test user', userCredential)
               resetForm();
             } catch (error) {
               toast({

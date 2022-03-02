@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component, createContext } from 'react';
-import { firestore } from '../firebase.js';
+import { db } from '../firebase.js';
 
 // Context
 export const ChallengeContext = createContext([{}]);
@@ -16,7 +16,7 @@ class ChallengeProvider extends Component {
   unsubscribeFromChallenge = null;
 
   componentDidMount = async () => {
-    this.unsubscribeFromChallenge = firestore
+    this.unsubscribeFromChallenge = db
       .collection('challenges')
       .doc(this.state.CUID)
       .onSnapshot((snapshot) => this.setState({ ...snapshot.data() }));

@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
-import { auth, firestore, storage } from '../../firebase.js';
+import { auth, db, storage } from '../../firebase.js';
 import { Box, Button, Flex, Icon, Text } from '@chakra-ui/core';
 import ToastFileHelper from './ToastFileHelper.jsx';
 
@@ -12,7 +12,7 @@ class FileHelper extends Component {
   }
 
   get userRef() {
-    return firestore.doc(`users/${this.uid}`);
+    return db.doc(`users/${this.uid}`);
   }
 
   get file() {

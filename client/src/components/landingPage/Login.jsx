@@ -1,7 +1,7 @@
 // Dependencies
 import { signInWithGoogle, signInWithEmail } from '../../firebase.js';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Chakra + Forms
 import { Formik, Form } from 'formik';
@@ -13,6 +13,7 @@ import ValidatorField from '../formHelpers/ValidatorField.jsx';
 
 const Login = () => {
   const toast = useToast();
+  let navigate = useNavigate();
 
   return (
     <Flex top="0" height="100%" width="100%" direction="column">
@@ -31,9 +32,9 @@ const Login = () => {
           validationSchema={validateEmailPasswordFormat}
           onSubmit={async (data, { resetForm }) => {
             try {
-              let userCredential= await signInWithEmail(data.email, data.password);
-              console.log('test user', userCredential)
+              await signInWithEmail(data.email, data.password);
               resetForm();
+              navigate('/profile')
             } catch (error) {
               toast({
                 title: 'An error occurred.',

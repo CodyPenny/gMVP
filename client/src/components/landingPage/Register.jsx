@@ -59,7 +59,7 @@ const Register = () => {
               console.log('user in register 52', user)
               await createUserProfileDocument( user );
               resetForm();
-              navigate('/login')
+              navigate('/profile')
             } catch (error) {
               console.log('error in form', error)
               toast({

@@ -16,7 +16,7 @@ import { StyledStack,StyledAccItem, StyleAccHeader, StyledBox, StyledText } from
 import ActiveChallenges from './ActiveChallenges.jsx';
 
 const UserPage = () => {
-  //const user = useContext(UserContext);
+  const user = useContext(UserContext);
   let navigate = useNavigate();
 
 
@@ -42,8 +42,8 @@ const UserPage = () => {
         height="100%"
         width="100%"
         spacing="1rem"
-      />
-        {/* <Box>
+      >
+        <Box>
           <Avatar
             name={user.displayName}
             src={user.photoURL}
@@ -57,7 +57,7 @@ const UserPage = () => {
             <AccordionPanel>{user.uid}</AccordionPanel>
           </StyledAccItem>
         </Box>
-
+{/* 
         <Flex justifyContent="space-between" overflowX="scroll">
           <StyledBox>
             <Box minWidth="80px">
@@ -83,9 +83,9 @@ const UserPage = () => {
               <StyledText>{Object.keys(user.friends).length - 1}</StyledText>
             </Box>
           </StyledBox>
-        </Flex>
+        </Flex> */}
 
-        <StyledBox>
+        {/* <StyledBox>
           {Object.keys(user.challenges).length === 0 ? (
             <Heading as="h6" size="sm">
               No Active Challenges
@@ -109,7 +109,7 @@ const UserPage = () => {
               <ActiveChallenges user={user} />
             </Stack>
           )}
-        </StyledBox>
+        </StyledBox> */}
 
         <Box>
           <AddFriend />
@@ -162,7 +162,7 @@ const UserPage = () => {
             bg="#F7EEC7"
           />
         </Flex>
-      </Box> */}
+      </Box>
     </Flex>
   );
 };

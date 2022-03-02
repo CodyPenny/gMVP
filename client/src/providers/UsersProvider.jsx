@@ -68,7 +68,7 @@ class UsersProvider extends Component {
 
   componentDidMount = () => {
 
-    this.authObserver()
+    //this.authObserver()
     this.unsubscribeFromAuth = onAuthStateChanged( auth, (user ) => {
       if (user) {
        

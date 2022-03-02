@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 
 import { getStorage } from "firebase/storage";
 //import 'firebase/analytics'
@@ -50,8 +50,8 @@ export const signInWithGoogle = () => signInWithPopup(auth, provider);
  * @param {*} password 
  * @returns 
  */
-export const signInWithEmail = (email, password) =>
-  signInWithEmailAndPassword(email, password);
+export const signInWithEmail = async (email, password) =>
+  await signInWithEmailAndPassword(auth, email, password);
 
 
 /**

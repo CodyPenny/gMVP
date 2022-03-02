@@ -1,37 +1,39 @@
 // Dependencies
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../../providers/UsersProvider.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Chakra + Forms
 import { signOutOfApp } from '../../firebase.js';
-import {
-  AccordionPanel,
-  Avatar,
-  Box,
-  Button,
-  Flex,
-  Heading,
-  IconButton,
-  SimpleGrid,
-  Stack
+import { AccordionPanel, Avatar, Box, Button, Flex, Heading, IconButton, SimpleGrid, Stack
 } from '@chakra-ui/core';
 import { FiLogOut, FiUsers, FiEdit } from 'react-icons/fi';
 import { MdPlaylistAdd } from 'react-icons/md';
 
 // Components + Styles
 import AddFriend from './AddFriend.jsx';
-import {
-  StyledStack,
-  StyledAccItem,
-  StyleAccHeader,
-  StyledBox,
-  StyledText
-} from '../../styledComponents/ericStyles.js';
+import { StyledStack,StyledAccItem, StyleAccHeader, StyledBox, StyledText } from '../../styledComponents/ericStyles.js';
 import ActiveChallenges from './ActiveChallenges.jsx';
 
 const UserPage = () => {
-  const user = useContext(UserContext);
+  //const user = useContext(UserContext);
+  let navigate = useNavigate();
+
+
+  /**
+   * If token exists, remain on the page, or be pushed to the login screen
+   */
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+
+    if (authToken) {
+        navigate('/profile')
+    }
+
+    if (!authToken) {
+        navigate('/login')
+    }
+  }, [])
 
   return (
     <Flex position="absolute" top="0" height="100%" width="100%">
@@ -40,8 +42,8 @@ const UserPage = () => {
         height="100%"
         width="100%"
         spacing="1rem"
-      >
-        <Box>
+      />
+        {/* <Box>
           <Avatar
             name={user.displayName}
             src={user.photoURL}
@@ -160,7 +162,7 @@ const UserPage = () => {
             bg="#F7EEC7"
           />
         </Flex>
-      </Box>
+      </Box> */}
     </Flex>
   );
 };

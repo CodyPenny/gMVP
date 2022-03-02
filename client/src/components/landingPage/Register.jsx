@@ -1,7 +1,7 @@
 // Dependencies
 import { registerWithEmailAndPassword, createUserProfileDocument } from '../../firebase.js';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Chakra + Forms
 import { Formik, Form } from 'formik';
@@ -13,6 +13,14 @@ import ValidatorField from '../formHelpers/ValidatorField.jsx';
 
 const Register = () => {
   const toast = useToast();
+  let navigate = useNavigate();
+
+  /**
+   * clean up or unmount error
+   */
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   return (
     // <Flex direction="column" align="center" justify="center">
@@ -43,13 +51,15 @@ const Register = () => {
           validationSchema={registerValid}
           onSubmit={async (data, { resetForm }) => {
             try {
-              const { user } = await registerWithEmailAndPassword(
+              const user = await registerWithEmailAndPassword(
                 data.email,
                 data.password,
                );
               user.displayName = data.displayName
-             await createUserProfileDocument( user );
+              console.log('user in register 52', user)
+              await createUserProfileDocument( user );
               resetForm();
+              navigate('/login')
             } catch (error) {
               console.log('error in form', error)
               toast({

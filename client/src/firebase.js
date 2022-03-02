@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc, onSnapshot } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { getStorage } from "firebase/storage";
@@ -56,13 +56,16 @@ export const signInWithEmail = (email, password) =>
 
 /**
  * Authenticates with Firebase
+ * Stores the token in session storage
  * @param {*} email 
  * @param {*} password 
  * @returns user's token and authentication to UsersProvider
  */
 export const registerWithEmailAndPassword = async ( email, password ) =>{
   console.log('registering')
-  return await createUserWithEmailAndPassword(auth, email, password)
+  let user =  await createUserWithEmailAndPassword(auth, email, password)
+  sessionStorage.setItem('Auth Token', user._tokenResponse.refreshToken)
+  return user.user
 }
 
 /**
@@ -82,7 +85,7 @@ export const resetPasswordWithEmail = (email) =>
  * @param {*} UID 
  * @returns document object matching the UID
  */
-const getRef = (collection, UID) => {
+export const getRef = (collection, UID) => {
   return doc( db, collection, UID )
 }
 
@@ -176,14 +179,6 @@ export const getUserDocument = async (UID) => {
   }
 };
 
-/**
- * Listen to the user's document and fetch updates
- */
-export const takeSnapShot = async ( uid ) => {
-  await onSnapshot( doc(db, "users", uid), doc => {
-    return doc.data()
-  })
-}
 
 /**
  * 

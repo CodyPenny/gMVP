@@ -48,16 +48,17 @@ const App = () => {
      <Flex direction="column" align="center" >
       <Router>
         <Routes>
-          <Route path="/" element={<LandingPage/>} />
+          <Route path="/" element={<LandingPage/>} /> 
             <Route path="login" element={<Login/>} />
             <Route path="register" element={<Register/>} />
             <Route path="reset" element={<ForgotPassword/>} />
             <Route path="confirmation" element={<CheckEmail/>}/>
-            <Route path="/profile" element={
+            <Route path="/profile" element={<UserPage />} />
+            {/* <Route path="/profile" element={
               <RequireAuth>
                 <UserPage />
               </RequireAuth>
-            } />
+            } /> */}
               {/* <Route path="/friends" element={<FriendsListHelper/>} />  */}
               {/* <Route path="/edit" element={<EditProfile/>} />
               <Route path="/challenge" element={<ChallengeStatus/>} />

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc, onSnapshot } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { getStorage } from "firebase/storage";
@@ -175,6 +175,15 @@ export const getUserDocument = async (UID) => {
     return 'getUserDocument Error';
   }
 };
+
+/**
+ * Listen to the user's document and fetch updates
+ */
+export const takeSnapShot = async ( uid ) => {
+  await onSnapshot( doc(db, "users", uid), doc => {
+    return doc.data()
+  })
+}
 
 /**
  * 

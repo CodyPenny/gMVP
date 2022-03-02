@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react';
-import { auth, createUserProfileDocument } from '../firebase.js';
+import { auth, createUserProfileDocument, takeSnapShot } from '../firebase.js';
 import  { onAuthStateChanged } from "firebase/auth";
 
 
@@ -32,7 +32,11 @@ class UsersProvider extends Component {
 
       if (userAuth) {
         // user is sign in
-        this.setState({ user: userAuth });
+        //this.setState({ user: userAuth });
+        let newData = await takeSnapShot( userAuth.uid )
+        this.setState({ user: newData })
+        console.log('taking snap shot')
+
 
         // creates a new user, why?
         // const userReference = await createUserProfileDocument(userAuth);

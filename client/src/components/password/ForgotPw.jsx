@@ -1,6 +1,6 @@
 // Dependencies
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Outlet } from 'react-router-dom';
 import { resetPasswordWithEmail } from '../../firebase.js';
 
 // Chakra + Forms
@@ -10,7 +10,7 @@ import ValidatorField from '../formHelpers/ValidatorField.jsx';
 import { emailValid } from '../formHelpers/validators.js';
 
 const ForgotPassword = () => {
-  const history = useNavigate();
+  let navigate = useNavigate();
   const toast = useToast();
 
   return (
@@ -46,10 +46,8 @@ const ForgotPassword = () => {
           onSubmit={async (data, { resetForm }) => {
             try {
               await resetPasswordWithEmail(data.email);
-
               resetForm();
-
-              history.push('/reset/confirmation');
+              navigate('/reset_confirmation');
             } catch (error) {
               toast({
                 title: 'An error occurred.',

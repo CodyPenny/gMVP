@@ -5,13 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 
 // Chakra + Forms
 import { signOutOfApp } from '../../firebase.js';
-import { AccordionPanel, Avatar, Box, Button, Flex, Heading, IconButton, SimpleGrid, Stack } from '@chakra-ui/react';
+import { AccordionPanel, Accordion, Avatar, Box, Button, Flex, Heading, IconButton, SimpleGrid, Stack } from '@chakra-ui/react';
 import { FiLogOut, FiUsers, FiEdit } from 'react-icons/fi';
 import { MdPlaylistAdd } from 'react-icons/md';
 
 // Components + Styles
 import AddFriend from './AddFriend.jsx';
-import { StyledStack,StyledAccItem, StyleAccHeader, StyledBox, StyledText } from '../../styledComponents/ericStyles.js';
+import { StyledStack,StyledAccItem, StyleAccHeader, StyledBox, StyledText } from '../../styledComponents/userPageStyles.js';
 import ActiveChallenges from './ActiveChallenges.jsx';
 
 const UserPage = () => {
@@ -49,12 +49,14 @@ const UserPage = () => {
             size="xl"
           ></Avatar>
 
+        <Accordion>
           <StyledAccItem>
             <StyleAccHeader>
               <Box flex="1">{user.displayName}</Box>
             </StyleAccHeader>
-            <AccordionPanel>{user.uid}</AccordionPanel>
+              <AccordionPanel>{user.uid}</AccordionPanel>
           </StyledAccItem>
+        </Accordion>
         </Box>
 {/* 
         <Flex justifyContent="space-between" overflowX="scroll">

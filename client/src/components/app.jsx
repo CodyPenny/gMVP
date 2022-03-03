@@ -9,7 +9,7 @@ import { Flex } from '@chakra-ui/react';
 import Login from './landingPage/Login.jsx';
 import Register from './landingPage/Register.jsx';
 import ForgotPassword from './password/ForgotPw.jsx';
-import CheckEmail from './password/CheckEmail.jsx';
+import ResetConfirmation from './password/ResetConfirmation.jsx';
 import LandingPage from './landingPage/LandingPage.jsx';
 
 // User Pages
@@ -24,7 +24,7 @@ import RequireAuth from './auth/RequireAuth.jsx';
 import {
   StyledPopoverContent,
   StyledButton
-} from '../styledComponents/ericStyles.js';
+} from '../styledComponents/userPageStyles.js';
 import ChallengeProvider from '../providers/ChallengeProvider.jsx';
 
 const App = () => {
@@ -38,8 +38,8 @@ const App = () => {
             <Route path="login" element={<Login/>} />
             <Route path="register" element={<Register/>} />
             <Route path="reset" element={<ForgotPassword/>} />
-            <Route path="confirmation" element={<CheckEmail/>}/>
-            <Route path="/profile" element={<UserPage />} />
+            <Route path="reset_confirmation" element={<ResetConfirmation/>}/>
+            <Route path="profile" element={<UserPage />} />
             {/* <Route path="/profile" element={
               <RequireAuth>
                 <UserPage />

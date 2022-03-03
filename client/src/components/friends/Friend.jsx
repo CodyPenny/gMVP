@@ -10,7 +10,7 @@ import {
   BsFillPersonFill,
   BsPersonCheck
 } from 'react-icons/bs';
-import { StyledIconButton } from '../../styledComponents/ericStyles.js';
+import { StyledIconButton } from '../../styledComponents/userPageStyles.js';
 
 const Friend = ({ UID, photoURL, displayName }) => {
   const challenge = useContext(ChallengeContext);

@@ -1,10 +1,9 @@
-// Dependencies
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Box, Flex, Text, Button, Icon } from '@chakra-ui/react';
 
-const CheckEmail = () => {
+const ResetConfirmation = () => {
   return (
     <Box
       bg="#BEEBE9"
@@ -66,4 +65,4 @@ const CheckEmail = () => {
   );
 };
 
-export default CheckEmail;
+export default ResetConfirmation;

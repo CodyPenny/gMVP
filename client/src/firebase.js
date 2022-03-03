@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 
 import { getStorage } from "firebase/storage";
 //import 'firebase/analytics'
@@ -69,14 +69,21 @@ export const registerWithEmailAndPassword = async ( email, password ) =>{
 }
 
 /**
- * 
+ * Send a password reset email to the user's email
  * @param {*} email 
+ * @returns promise password reset email has been sent
+ */
+export const resetPasswordWithEmail = async (email) => {
+  await sendPasswordResetEmail(auth, email);
+}
+
+
+
+/**
+ * 
  * @returns 
  */
-export const resetPasswordWithEmail = (email) =>
-  auth.sendPasswordResetEmail(email);
-
-  export const signOutOfApp = () => signOut(auth)
+export const signOutOfApp = () => signOut(auth)
 
 
 /**

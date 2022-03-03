@@ -2,16 +2,10 @@ import React from 'react'
 import { Routes, Route, Link, Navigate, Outlet } from 'react-router-dom';
 import { Box, Flex, Popover, PopoverTrigger, PopoverHeader, PopoverBody, PopoverArrow, Image, Button, Text } from '@chakra-ui/react';
 
-  // Landing Page
-import Login from './Login.jsx';
-import Register from './Register.jsx';
-import ForgotPassword from '../password/ForgotPw.jsx';
-import CheckEmail from '../password/CheckEmail.jsx';
-
 import {
     StyledPopoverContent,
     StyledButton
-  } from '../../styledComponents/ericStyles.js';
+  } from '../../styledComponents/userPageStyles.js';
 
 const LandingPage = () => {
 
@@ -117,8 +111,8 @@ const LandingPage = () => {
             Register
             </Box>
         </Link>
-        {/* <Outlet /> */}
         </Flex>
+        {/* <Outlet /> */}
     </Box>
 
   )

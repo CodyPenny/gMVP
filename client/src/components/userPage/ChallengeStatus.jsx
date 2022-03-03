@@ -8,7 +8,7 @@ import { ChallengeContext } from '../../providers/ChallengeProvider.jsx';
 // ChakraUI
 import { Box, IconButton, Heading, Flex, SimpleGrid, Stack, Textarea } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import { StyledText } from '../../styledComponents/ericStyles.js';
+import { StyledText } from '../../styledComponents/userPageStyles.js';
 import { FiPlus, FiUser, FiEdit3 } from 'react-icons/fi';
 
 // Components

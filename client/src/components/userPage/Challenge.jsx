@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // Chakra
 import { Text, SimpleGrid } from '@chakra-ui/react';
-import { StyledBoxC } from '../../styledComponents/ericStyles.js';
+import { StyledBoxC } from '../../styledComponents/userPageStyles.js';
 
 const Challenge = ({ CUID, challengeName, memberCount, duration }) => {
   return (
